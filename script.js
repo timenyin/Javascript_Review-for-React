@@ -179,14 +179,83 @@ const updatedBook = {
 };
 updatedBook;
 
+//======= ARROW FUNCTION =====
+// function getYear(str){
+//   return str.split("-")[0]
+// }
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
 // TEMPLATE LITERALS
 const summary = `${title}, is a book with a ${pages} pages, which was written by ${author} 
-which was published on ${publicationDate}. the has ${
+which was published on ${getYear(publicationDate)}. the has ${
+  // an example  ternaries operator inside a template strings
   hasMovieAdaptation ? " " : "not"
 } adapted as a movie `;
 summary;
 
 // TERNARIES OPERATORS (IF- ELSEIF- ELSE STATEMENT)
-const pagesRange = pages > 1000 ? "over a thousand " : "less than one thousand";
+const pagesRange =
+  pages > 1000 ? "over a thousand pages " : "less than one thousand pages ";
+pages;
 
 console.log(pagesRange);
+
+// ARROW FUNCTION
+// help in writing quick and short line of code
+
+// example  long function
+/*
+function getYear(str) {
+  return str.split("-")[0] 
+} 
+
+console.log(getYear(publicationDate));
+*/
+
+// arrow function example
+/*
+const getYear = (str) => str.split("-")[0] // can also used return {}
+console.log(getYear(publicationDate));
+*/
+
+// SHORT CIRCUITING AND LOGICAL OPERATORS &&, ||, ??
+
+// ======= "AND '&&' Operators" ========
+console.log(true && "this is false value"); // return false when the first  value is true  can be 0, '', null, undefined
+console.log(0 && "some strings");
+
+// e.g
+const getGenres = genres[2] && "this is not available in the is book catalog ";
+console.log(getGenres);
+
+// ======= "OR '||' Operators" ========
+console.log(true || "some strings"); // return when the first value is true
+console.log(false || "some strings");
+
+console.log(book.translations.chinese);
+
+// e.g
+const spanishTranslation =
+  book.translations.spanish || "is not in the books categories";
+console.log(spanishTranslation);
+
+// error can be found
+// const countWrong = book.reviews.librarything.reviewsCount|| "NO DATA"
+// console.log(countWrong); // supposed to be 0 no =>
+
+// ======= "NUllising  '??' Operators" ========
+//e.g
+// const countReview = book.reviews.librarything.reviewsCount ?? "No Data"
+// console.log(countReview);
+
+// OPTIONAL CHAINING
+function getTotaReviewCount(book) {
+  const goodread = book.reviews.goodreads.reviewsCount;
+  const librayThing = book.reviews.librarything?.reviewsCount ?? 0; // using the optionally '?'
+  librayThing; // to confirm
+
+  return goodread + librayThing;
+}
+
+console.log(getTotaReviewCount(book));
