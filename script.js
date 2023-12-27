@@ -146,6 +146,7 @@ function getBook(id) {
 }
 
 // DESTRUCTURING
+/*
 const book = getBook(2);
 book;
 
@@ -222,6 +223,7 @@ console.log(getYear(publicationDate));
 // SHORT CIRCUITING AND LOGICAL OPERATORS &&, ||, ??
 
 // ======= "AND '&&' Operators" ========
+/*
 console.log(true && "this is false value"); // return false when the first  value is true  can be 0, '', null, undefined
 console.log(0 && "some strings");
 
@@ -239,7 +241,7 @@ console.log(book.translations.chinese);
 const spanishTranslation =
   book.translations.spanish || "is not in the books categories";
 console.log(spanishTranslation);
-
+*/
 // error can be found
 // const countWrong = book.reviews.librarything.reviewsCount|| "NO DATA"
 // console.log(countWrong); // supposed to be 0 no =>
@@ -250,12 +252,18 @@ console.log(spanishTranslation);
 // console.log(countReview);
 
 // OPTIONAL CHAINING
-function getTotaReviewCount(book) {
-  const goodread = book.reviews.goodreads.reviewsCount;
-  const librayThing = book.reviews.librarything?.reviewsCount ?? 0; // using the optionally '?'
-  librayThing; // to confirm
+// function getTotaReviewCount(book) {
+//   const goodread = book.reviews.goodreads.reviewsCount;
+//   const librayThing = book.reviews.librarything?.reviewsCount ?? 0; // using the optionally '?'
+//   librayThing; // to confirm
 
-  return goodread + librayThing;
-}
+//   return goodread + librayThing;
+// }
 
-console.log(getTotaReviewCount(book));
+// console.log(getTotaReviewCount(book));
+
+// ===== ARRAY METHODS ===========
+//===========================================
+
+// ------ ARRAY MAP METHOD -------------
+const books = getBooks();
