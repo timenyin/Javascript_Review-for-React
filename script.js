@@ -264,6 +264,135 @@ console.log(spanishTranslation);
 
 // ===== ARRAY METHODS ===========
 //===========================================
-
-// ------ ARRAY MAP METHOD -------------
 const books = getBooks();
+// ------ ARRAY MAP METHOD -------------
+/*
+books;
+// e.g
+const x = [1, 2, 3, 4, 5].map((el) => el * 6);
+console.log(x);
+
+// array for title for all the books
+const getTitle = books.map((book) => book.title);
+console.log(getTitle);
+
+// get all the books authors
+const booksAuthor = books.map((book) => book.author);
+console.log(booksAuthor);
+
+// get all the id's for books
+const idBooks = books.map((book) => book.id);
+console.log(idBooks);
+
+// to get the title and the author together
+// 1st method
+const essentialData = books.map((book) => {
+  return {
+    id: book.id,
+    title: book.title,
+    author: book.author,
+  };
+});
+console.log(essentialData);
+
+// 2nd method
+function getTotaReviewCount(book) {
+  const goodread = book.reviews.goodreads.reviewsCount;
+  const librayThing = book.reviews.librarything?.reviewsCount ?? 0; // using the optionally '?'
+  librayThing; // to confirm
+
+  return goodread + librayThing;
+}
+
+const essentialData2 = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewCount: getTotaReviewCount(book),
+}));
+
+console.log(essentialData2);
+
+const idAndgenres = books.map((book) => ({
+  id: book.id,
+  genres: book.genres,
+}));
+
+// console.log(idAndgenres);
+*/
+// ===== FILTER METHODS ===========
+//===========================================
+/*
+const longBooks = books.filter((book) => book.pages > 500); // this books.filter(book => *** will return a condition of 'IF OR ELSE I.E TRUE OR FALSE ** )
+console.log(longBooks);
+
+const longBooks2 = books
+  .filter((book) => book.pages > 700)
+  .filter((book) => book.hasMovieAdaptation);
+longBooks2;
+
+// filter the adventure Books
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+console.log(adventureBooks);
+
+// filter for fantasy
+const fantasy = books
+  .filter((book) => book.genres.includes("fantasy"))
+  .map((book) => book.author);
+fantasy;
+
+*/
+
+// ===== ARRAY REDUCE METHODS ===========
+//===========================================
+/*
+const NumberOfPages = books.reduce((acc, book) => acc + book.pages, 0);
+NumberOfPages;
+
+// ===== ARRAY SORT METHODS ===========
+//===========================================
+const arr = [3, 7, 1, 9, 6, 10, 23];
+const sorted = arr.sort((a, b) => b - a);
+sorted;
+
+// sort books
+const sortBooks = books.map((book) => book.author); //.sort((a, b) => b - a )
+sortBooks;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+*/
+
+// ===== IMMUTABLE ARRAY ===========
+//===========================================
+/*
+const newBook = {
+  id: 6,
+  title: "harmony in  the cloud",
+  author: "harmony",
+};
+
+//1.  Add new array
+const newUpdatedBook = [...books, newBook];
+newUpdatedBook;
+
+// 2 Delete book object from array
+const booksAfterDelete = newUpdatedBook.filter((book) => book.id !== 3);
+booksAfterDelete
+
+
+// 3 Update  book object from array
+const bookAfterUpdate = booksAfterDelete.map((book) =>book.id === 1 ? {} : book )
+bookAfterUpdate
+
+// can still be 
+const bookAfterUpdate2 = booksAfterDelete.map((book) =>book.id === 1 ? {...book, pages: 1223} : book )
+bookAfterUpdate2
+
+*/
+
+// ===== ASYNCHRONOUS JS PROMISES ===========
+//===========================================
+fetch('https://jsonplaceholder.typicode.com/todos').then()
