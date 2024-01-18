@@ -395,4 +395,26 @@ bookAfterUpdate2
 
 // ===== ASYNCHRONOUS JS PROMISES ===========
 //===========================================
-fetch('https://jsonplaceholder.typicode.com/todos').then()
+/*
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then()
+  .then((data) => console.log(data));
+
+console.log("harmony");
+*/
+
+// ===== ASYNCHRONOUS JS Await ===========
+//====================== better way =====================
+async function getToDos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+
+  return data;
+}
+const todos = getToDos();
+console.log(todos);
+//getToDos();
+
+console.log("harmony");
